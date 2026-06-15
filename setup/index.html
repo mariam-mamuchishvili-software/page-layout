@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page Layout Components</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0"
+    />
+
+    <link rel="icon" href="images/themes/layout-blocks.png" />
+  </head>
+  <body>
+    <!-- PAGE — full-viewport wrapper -->
+    <section class="wrapper" data-layout-structure="page">
+      <!-- BUILDER — max-width centred container -->
+      <div class="container" data-layout-structure="builder">
+        <!-- HEADER (builder) -->
+        <header data-layout-structure="block">
+          <h2 class="section-title" data-content="title">
+            Page Layout Components
+          </h2>
+          <h4 class="section-subtitle" data-content="subtitle">
+            Understanding the main layout block concepts —
+            <code>page</code>, <code>builder</code>, <code>partial</code>,
+            <code>block</code> &amp; <code>component</code>.
+          </h4>
+        </header>
+
+        <nav data-layout-structure="partial">
+          <ul class="nav-list" data-layout-structure="block">
+            <li class="active" data-layout-structure="component">
+              <a class="nav-link" href="#">
+                <span class="material-symbols-outlined">home</span>
+                Home
+              </a>
+            </li>
+            <li data-layout-structure="component">
+              <a class="nav-link" href="#">
+                <span class="material-symbols-outlined">info</span>
+                <span class="link-label">About</span>
+              </a>
+            </li>
+            <li data-layout-structure="component">
+              <a class="nav-link" href="#">
+                <span class="material-symbols-outlined">design_services</span>
+                <span class="link-label">Services</span>
+              </a>
+            </li>
+            <li data-layout-structure="component">
+              <a class="nav-link" href="#">
+                <span class="material-symbols-outlined">mail</span>
+                <span class="link-label">Contact</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="authorization" data-layout-structure="block">
+            <button data-layout-structure="component">Sign In</button>
+            <button data-layout-structure="component">Sign Up</button>
+          </div>
+        </nav>
+
+        <div class="slider" data-layout-structure="block">
+          <div class="slider-item" data-layout-structure="component">
+            <img
+              src="images/slides/slide-1.webp"
+              alt=""
+              data-layout-structure="component"
+            />
+            <div class="slider-content">
+              <h4 class="post-title-text">His mother had always taught him</h4>
+              <p class="post-excerpt">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW (builder) — 2-column grid -->
+        <div class="row" data-layout-structure="builder">
+          <!-- COL · main (partial) -->
+          <div class="col" data-layout-structure="builder" data-content="main">
+            <main data-layout-structure="partial">
+              <!-- BLOCK — posts -->
+              <div
+                class="posts-block"
+                data-layout-structure="block"
+                data-media="container"
+              >
+                <h3 class="block-header post-title">
+                  <span class="material-symbols-outlined">article</span>
+                  Latest Posts
+                </h3>
+                <div class="posts-wrapper">
+                  <div class="post" data-layout-structure="component">
+                    <h4 class="post-title-text">
+                      His mother had always taught him
+                    </h4>
+                    <p class="post-body">
+                      His mother had always taught him not to ever think of
+                      himself as better than others. He tried to live by this
+                      motto, but a difficult conversation challenged that
+                      belief.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">history</span>
+                      <span class="tag">american</span>
+                      <span class="tag">crime</span>
+                    </div>
+                    <div class="post-meta">
+                      <div class="post-reactions">
+                        <span class="reaction">👍 <strong>192</strong></span>
+                        <span class="reaction">👎 <strong>25</strong></span>
+                      </div>
+                      <span class="post-views">👁 305 views</span>
+                    </div>
+                  </div>
+
+                  <div class="post" data-layout-structure="component">
+                    <h4 class="post-title-text">
+                      He was an expert but not in a discipline
+                    </h4>
+                    <p class="post-body">
+                      He had mastered the small art of making perfect soft-serve
+                      cones. It was not a famous skill, but it took years of
+                      patience and repetition.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">french</span>
+                      <span class="tag">fiction</span>
+                      <span class="tag">english</span>
+                    </div>
+                    <div class="post-meta">
+                      <div class="post-reactions">
+                        <span class="reaction">👍 <strong>859</strong></span>
+                        <span class="reaction">👎 <strong>32</strong></span>
+                      </div>
+                      <span class="post-views">👁 4,884 views</span>
+                    </div>
+                  </div>
+
+                  <div class="post" data-layout-structure="component">
+                    <h4 class="post-title-text">
+                      The archive opened after midnight
+                    </h4>
+                    <p class="post-body">
+                      The researcher found a missing catalog card behind the
+                      cabinet. It pointed to a sealed box no one had requested
+                      in thirty years.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">mystery</span>
+                      <span class="tag">archive</span>
+                      <span class="tag">research</span>
+                    </div>
+                    <div class="post-meta">
+                      <div class="post-reactions">
+                        <span class="reaction">👍 <strong>341</strong></span>
+                        <span class="reaction">👎 <strong>18</strong></span>
+                      </div>
+                      <span class="post-views">👁 1,290 views</span>
+                    </div>
+                  </div>
+
+                  <div class="post" data-layout-structure="component">
+                    <h4 class="post-title-text">
+                      A small city changed its traffic lights
+                    </h4>
+                    <p class="post-body">
+                      The council expected complaints after the new timing
+                      system launched. Instead, drivers noticed shorter waits
+                      and fewer crowded intersections.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">urban</span>
+                      <span class="tag">planning</span>
+                      <span class="tag">technology</span>
+                    </div>
+                    <div class="post-meta">
+                      <div class="post-reactions">
+                        <span class="reaction">👍 <strong>512</strong></span>
+                        <span class="reaction">👎 <strong>44</strong></span>
+                      </div>
+                      <span class="post-views">👁 2,307 views</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pagination-block" data-layout-structure="block">
+                  <ul class="pagination">
+                    <li class="page-item" data-layout-structure="component">
+                      <button class="page-link" aria-label="Previous">
+                        <span class="material-symbols-outlined"
+                          >chevron_left</span
+                        >
+                      </button>
+                    </li>
+                    <li
+                      class="page-item active"
+                      data-layout-structure="component"
+                    >
+                      <button class="page-link">1</button>
+                    </li>
+                    <li class="page-item" data-layout-structure="component">
+                      <button class="page-link">2</button>
+                    </li>
+                    <li class="page-item" data-layout-structure="component">
+                      <button class="page-link">3</button>
+                    </li>
+                    <li class="page-item" data-layout-structure="component">
+                      <button class="page-link" aria-label="Next">
+                        <span class="material-symbols-outlined"
+                          >chevron_right</span
+                        >
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- /posts -->
+
+              <div
+                class="questions-block"
+                data-layout-structure="block"
+                data-media="container"
+              >
+                <h3 class="block-header">
+                  <span class="material-symbols-outlined">help</span>
+                  Questions
+                </h3>
+                <div class="questions-wrapper">
+                  <div class="question" data-layout-structure="component">
+                    <details>
+                      <summary>
+                        What is the difference between a
+                        <code>page</code> and a <code>builder</code>?
+                      </summary>
+                      <p class="answer">
+                        The <code>page</code> is the outermost full-viewport
+                        wrapper — it fills the screen and sets the background
+                        canvas. The <code>builder</code> (the
+                        <code>container</code> div) lives inside it and
+                        constrains content to a readable max-width, centred with
+                        <code>margin-inline: auto</code>. Think of
+                        <code>page</code> as the wall and
+                        <code>builder</code> as the framed picture hanging on
+                        it.
+                      </p>
+                    </details>
+                  </div>
+
+                  <div class="question" data-layout-structure="component">
+                    <details>
+                      <summary>
+                        What is a
+                        <code>partial</code> and why does it matter?
+                      </summary>
+                      <p class="answer">
+                        A <code>partial</code> is a named region of the page —
+                        <code>main</code>, <code>aside</code>,
+                        <code>header</code>, or <code>footer</code>. Each
+                        partial owns a distinct area of the layout. The
+                        <code>row</code> splits the canvas into columns and each
+                        column holds one or more partials. Partials define
+                        <em>where</em> content lives, not what the content looks
+                        like.
+                      </p>
+                    </details>
+                  </div>
+
+                  <div class="question" data-layout-structure="component">
+                    <details>
+                      <summary>
+                        How is a
+                        <code>block</code> different from a
+                        <code>component</code>?
+                      </summary>
+                      <p class="answer">
+                        A <code>block</code> is a named content group —
+                        <code>posts</code>, <code>events</code>, or
+                        <code>tasks</code> — that collects related components
+                        under one labelled roof. A <code>component</code> is the
+                        smallest self-contained unit: a single post card, an
+                        event card, or a task item. Blocks provide the heading
+                        and container; components provide the repeatable content
+                        inside.
+                      </p>
+                    </details>
+                  </div>
+
+                  <div class="question" data-layout-structure="component">
+                    <details>
+                      <summary>
+                        Why use
+                        <code>data-layout-structure</code>
+                        instead of plain class names?
+                      </summary>
+                      <p class="answer">
+                        Class names describe
+                        <em>style</em>
+                        (<code>card</code>,
+                        <code>row</code>, <code>active</code>). The
+                        <code>data-layout-structure</code>
+                        attribute describes
+                        <em>role</em> in the architecture — a completely
+                        separate concern. This means you can restyle every
+                        component without touching the HTML, and tooling or a
+                        CSS inspector overlay can query structural intent rather
+                        than visual appearance.
+                      </p>
+                    </details>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BLOCK — contact form -->
+              <div
+                class="contact-block"
+                data-layout-structure="block"
+                data-media="container"
+              >
+                <h3 class="block-header">
+                  <span class="material-symbols-outlined">send</span>
+                  Contact Us
+                </h3>
+                <form
+                  class="contact-form"
+                  data-layout-structure="component"
+                  novalidate
+                >
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label" for="contact-name">Name</label>
+                      <input
+                        class="form-input"
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        required
+                        minlength="2"
+                      />
+                      <span class="form-message form-message--required"
+                        >Name is required.</span
+                      >
+                      <span class="form-message form-message--invalid"
+                        >At least 2 characters required.</span
+                      >
+                      <span class="form-message form-message--success"
+                        >Looks good!</span
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="contact-email"
+                        >Email</label
+                      >
+                      <input
+                        class="form-input"
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                      />
+                      <span class="form-message form-message--required"
+                        >Email is required.</span
+                      >
+                      <span class="form-message form-message--invalid"
+                        >Enter a valid email address.</span
+                      >
+                      <span class="form-message form-message--success"
+                        >Valid email address.</span
+                      >
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="contact-subject"
+                      >Subject</label
+                    >
+                    <input
+                      class="form-input"
+                      type="text"
+                      id="contact-subject"
+                      name="subject"
+                      placeholder="What's this about?"
+                      required
+                      minlength="3"
+                    />
+                    <span class="form-message form-message--required"
+                      >Subject is required.</span
+                    >
+                    <span class="form-message form-message--invalid"
+                      >At least 3 characters required.</span
+                    >
+                    <span class="form-message form-message--success"
+                      >Looks good!</span
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="contact-message"
+                      >Message</label
+                    >
+                    <textarea
+                      class="form-input form-textarea"
+                      id="contact-message"
+                      name="message"
+                      placeholder="Your message…"
+                      rows="5"
+                      required
+                      minlength="10"
+                    ></textarea>
+                    <span class="form-message form-message--required"
+                      >Message is required.</span
+                    >
+                    <span class="form-message form-message--invalid"
+                      >At least 10 characters required.</span
+                    >
+                    <span class="form-message form-message--success"
+                      >Great, thanks!</span
+                    >
+                  </div>
+                  <button class="form-submit" type="submit">
+                    <span class="material-symbols-outlined">send</span>
+                    Send Message
+                  </button>
+                </form>
+              </div>
+              <!-- /contact form -->
+            </main>
+          </div>
+
+          <!-- COL · aside (partial) -->
+          <div class="col" data-layout-structure="builder" data-content="aside">
+            <aside data-layout-structure="partial">
+              <!-- BLOCK — events -->
+              <div
+                class="events-block"
+                data-layout-structure="block"
+                data-media="container"
+              >
+                <h3 class="block-header event-title">
+                  <span class="material-symbols-outlined">event</span>
+                  Events
+                </h3>
+                <div class="events-wrapper">
+                  <!-- 643/800 = 80 % → warning -->
+                  <div class="event" data-layout-structure="component">
+                    <div class="event-header">
+                      <h4 class="event-title-text">Riverside Jazz Night</h4>
+                      <span class="badge badge--upcoming">upcoming</span>
+                    </div>
+                    <p class="event-desc">
+                      A free open-air concert featuring three local quartets.
+                      Bring a blanket; food trucks arrive at sunset.
+                    </p>
+                    <div class="event-location">
+                      📍 Riverside Park, Portland, USA
+                    </div>
+                    <div class="event-footer">
+                      <span class="event-date">🗓 Jul 12, 2026</span>
+                      <div class="capacity-bar">
+                        <div class="capacity-track">
+                          <div
+                            class="capacity-fill"
+                            style="width: 80%; background: var(--clr-warning)"
+                          ></div>
+                        </div>
+                        <span class="capacity-label">643 / 800</span>
+                      </div>
+                    </div>
+                    <div class="tags">
+                      <span class="tag">music</span>
+                      <span class="tag">outdoor</span>
+                      <span class="tag">community</span>
+                    </div>
+                  </div>
+
+                  <!-- 250/250 = 100 % → danger -->
+                  <div class="event" data-layout-structure="component">
+                    <div class="event-header">
+                      <h4 class="event-title-text">
+                        Open Source Maintainers Summit
+                      </h4>
+                      <span class="badge badge--sold_out">sold out</span>
+                    </div>
+                    <p class="event-desc">
+                      A one-day gathering for project maintainers to swap
+                      burnout survival tactics and governance models.
+                    </p>
+                    <div class="event-location">
+                      📍 Hall C, Convention Center, Berlin, Germany
+                    </div>
+                    <div class="event-footer">
+                      <span class="event-date">🗓 Sep 3, 2026</span>
+                      <div class="capacity-bar">
+                        <div class="capacity-track">
+                          <div
+                            class="capacity-fill"
+                            style="width: 100%; background: var(--clr-danger)"
+                          ></div>
+                        </div>
+                        <span class="capacity-label">250 / 250</span>
+                      </div>
+                    </div>
+                    <div class="tags">
+                      <span class="tag">technology</span>
+                      <span class="tag">conference</span>
+                      <span class="tag">developers</span>
+                    </div>
+                  </div>
+
+                  <!-- 88/120 = 73 % → accent -->
+                  <div class="event" data-layout-structure="component">
+                    <div class="event-header">
+                      <h4 class="event-title-text">Coastal Cleanup Morning</h4>
+                      <span class="badge badge--completed">completed</span>
+                    </div>
+                    <p class="event-desc">
+                      Volunteers meet at the north pier to collect debris before
+                      the tide turns. Gloves and bags provided.
+                    </p>
+                    <div class="event-location">
+                      📍 North Pier, Brighton, UK
+                    </div>
+                    <div class="event-footer">
+                      <span class="event-date">🗓 May 30, 2026</span>
+                      <div class="capacity-bar">
+                        <div class="capacity-track">
+                          <div
+                            class="capacity-fill"
+                            style="width: 73%; background: var(--clr-accent)"
+                          ></div>
+                        </div>
+                        <span class="capacity-label">88 / 120</span>
+                      </div>
+                    </div>
+                    <div class="tags">
+                      <span class="tag">environment</span>
+                      <span class="tag">volunteering</span>
+                      <span class="tag">outdoor</span>
+                    </div>
+                  </div>
+
+                  <!-- 14/16 = 88 % → warning -->
+                  <div class="event" data-layout-structure="component">
+                    <div class="event-header">
+                      <h4 class="event-title-text">
+                        Late Night Pasta Workshop
+                      </h4>
+                      <span class="badge badge--upcoming">upcoming</span>
+                    </div>
+                    <p class="event-desc">
+                      A hands-on class where each guest rolls, cuts, and plates
+                      their own fresh tagliatelle.
+                    </p>
+                    <div class="event-location">
+                      📍 Cucina Lab, Bologna, Italy
+                    </div>
+                    <div class="event-footer">
+                      <span class="event-date">🗓 Jun 21, 2026</span>
+                      <div class="capacity-bar">
+                        <div class="capacity-track">
+                          <div
+                            class="capacity-fill"
+                            style="width: 88%; background: var(--clr-warning)"
+                          ></div>
+                        </div>
+                        <span class="capacity-label">14 / 16</span>
+                      </div>
+                    </div>
+                    <div class="tags">
+                      <span class="tag">food</span>
+                      <span class="tag">workshop</span>
+                      <span class="tag">cooking</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- /events-wrapper -->
+              </div>
+              <!-- /events-block -->
+
+              <!-- BLOCK — tasks -->
+              <div
+                class="tasks-block"
+                data-layout-structure="block"
+                data-media="container"
+              >
+                <h3 class="block-header task-title">
+                  <span class="material-symbols-outlined">checklist</span>
+                  Team Tasks
+                </h3>
+                <div class="tasks-wrapper">
+                  <!-- high / in_progress / 60 % → warning -->
+                  <div
+                    class="task"
+                    data-layout-structure="component"
+                    data-completed="false"
+                  >
+                    <div class="task-header">
+                      <h4 class="task-title-text">
+                        Migrate user table to new schema
+                      </h4>
+                      <span class="badge badge--high">high</span>
+                    </div>
+                    <p class="task-desc">
+                      Add the verified_at column and backfill existing rows in
+                      batches to avoid locking the table.
+                    </p>
+                    <div class="task-footer">
+                      <div class="progress-wrap">
+                        <div class="progress-row">
+                          <span class="badge badge--in_progress"
+                            >in progress</span
+                          >
+                          <span class="progress-pct">60%</span>
+                        </div>
+                        <div class="progress-track">
+                          <div
+                            class="progress-fill"
+                            style="width: 60%; background: var(--clr-warning)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="task-meta">
+                        <div class="tags">
+                          <span class="tag">backend</span>
+                          <span class="tag">database</span>
+                          <span class="tag">migration</span>
+                        </div>
+                        <span class="due-date">Due Jun 10, 2026</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- medium / todo / 0 % → info -->
+                  <div
+                    class="task"
+                    data-layout-structure="component"
+                    data-completed="false"
+                  >
+                    <div class="task-header">
+                      <h4 class="task-title-text">
+                        Write onboarding email sequence
+                      </h4>
+                      <span class="badge badge--medium">medium</span>
+                    </div>
+                    <p class="task-desc">
+                      Draft five emails covering setup, first win, tips, social
+                      proof, and a check-in.
+                    </p>
+                    <div class="task-footer">
+                      <div class="progress-wrap">
+                        <div class="progress-row">
+                          <span class="badge badge--todo">todo</span>
+                          <span class="progress-pct">0%</span>
+                        </div>
+                        <div class="progress-track">
+                          <div
+                            class="progress-fill"
+                            style="width: 0%; background: var(--clr-info)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="task-meta">
+                        <div class="tags">
+                          <span class="tag">marketing</span>
+                          <span class="tag">copywriting</span>
+                          <span class="tag">email</span>
+                        </div>
+                        <span class="due-date">Due Jun 18, 2026</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- urgent / in_progress / 35 % → info -->
+                  <div
+                    class="task"
+                    data-layout-structure="component"
+                    data-completed="false"
+                  >
+                    <div class="task-header">
+                      <h4 class="task-title-text">Fix flaky checkout test</h4>
+                      <span class="badge badge--urgent">urgent</span>
+                    </div>
+                    <p class="task-desc">
+                      The payment integration test fails intermittently under
+                      load. Reproduce, isolate the race condition, and
+                      stabilize.
+                    </p>
+                    <div class="task-footer">
+                      <div class="progress-wrap">
+                        <div class="progress-row">
+                          <span class="badge badge--in_progress"
+                            >in progress</span
+                          >
+                          <span class="progress-pct">35%</span>
+                        </div>
+                        <div class="progress-track">
+                          <div
+                            class="progress-fill"
+                            style="width: 35%; background: var(--clr-info)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="task-meta">
+                        <div class="tags">
+                          <span class="tag">testing</span>
+                          <span class="tag">ci</span>
+                          <span class="tag">bug</span>
+                        </div>
+                        <span class="due-date">Due Jun 5, 2026</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- low / done / 100 % → success / completed -->
+                  <div
+                    class="task"
+                    data-layout-structure="component"
+                    data-completed="true"
+                  >
+                    <div class="task-header">
+                      <h4 class="task-title-text">
+                        Archive Q1 financial reports
+                      </h4>
+                      <span class="badge badge--low">low</span>
+                    </div>
+                    <p class="task-desc">
+                      Export the closed quarterly statements to cold storage and
+                      update the index spreadsheet.
+                    </p>
+                    <div class="task-footer">
+                      <div class="progress-wrap">
+                        <div class="progress-row">
+                          <span class="badge badge--done">done</span>
+                          <span class="progress-pct">100%</span>
+                        </div>
+                        <div class="progress-track">
+                          <div
+                            class="progress-fill"
+                            style="width: 100%; background: var(--clr-success)"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="task-meta">
+                        <div class="tags">
+                          <span class="tag">finance</span>
+                          <span class="tag">admin</span>
+                          <span class="tag">archive</span>
+                        </div>
+                        <span class="due-date">Due May 20, 2026</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /tasks-wrapper -->
+              </div>
+              <!-- /tasks-block -->
+            </aside>
+          </div>
+        </div>
+        <!-- /row -->
+
+        <!-- FOOTER (partial) -->
+        <footer data-layout-structure="partial">
+          <!-- BLOCK 1 — map -->
+          <div class="footer-map" data-layout-structure="block">
+            <h3 class="block-header map-title">
+              <span class="material-symbols-outlined">location_on</span>
+              Georgia, Tbilisi
+            </h3>
+            <div class="map-embed" data-layout-structure="component">
+              <iframe
+                src="https://maps.google.com/maps?q=Tbilisi,Georgia&output=embed"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Tbilisi, Georgia"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- BLOCK 2 — contact info -->
+          <div class="footer-contact" data-layout-structure="block">
+            <h3 class="block-header contact-title">
+              <span class="material-symbols-outlined">contact_mail</span>
+              Contact Info
+            </h3>
+            <ul class="contact-list">
+              <li class="contact-item" data-layout-structure="component">
+                <span class="material-symbols-outlined">location_on</span>
+                <span>42 Component Lane, CSS City</span>
+              </li>
+              <li class="contact-item" data-layout-structure="component">
+                <span class="material-symbols-outlined">mail</span>
+                <a href="mailto:hello@layoutcomponents.dev"
+                  >hello@layoutcomponents.dev</a
+                >
+              </li>
+              <li class="contact-item" data-layout-structure="component">
+                <span class="material-symbols-outlined">phone</span>
+                <a href="tel:+15551234567">+1 (555) 123-4567</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- BLOCK 3 — social links -->
+          <div class="social-links" data-layout-structure="block">
+            <h3 class="block-header social-title">
+              <span class="material-symbols-outlined">share</span>
+              Follow Us
+            </h3>
+            <div class="social-icons">
+              <div class="social-icon" data-layout-structure="component">
+                <a href="#" aria-label="Facebook">
+                  <span class="label">Facebook</span>
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </div>
+              <div class="social-icon" data-layout-structure="component">
+                <a href="#" aria-label="Twitter">
+                  <span class="label">Twitter</span>
+                  <i class="fab fa-x-twitter"></i>
+                </a>
+              </div>
+              <div class="social-icon" data-layout-structure="component">
+                <a href="#" aria-label="Instagram">
+                  <span class="label">Instagram</span>
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+              <div class="social-icon" data-layout-structure="component">
+                <a href="#" aria-label="GitHub">
+                  <span class="label">GitHub</span>
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <!-- /container -->
+    </section>
+    <!-- /wrapper -->
+  </body>
+</html>
