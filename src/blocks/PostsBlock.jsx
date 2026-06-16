@@ -1,32 +1,66 @@
-import { useState, useEffect } from 'react'
-import PostCard from '../components/PostCard'
-import PaginationBlock from './PaginationBlock'
-import { getPosts } from '../services/api'
+import { useState } from "react";
+import PostCard from "../components/PostCard";
+import PaginationBlock from "./PaginationBlock";
 
-export default function PostsBlock({ title = 'Latest Posts', icon = 'article' }) {
-  const [posts, setPosts] = useState([])
-  const [page, setPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
+const POSTS_PER_PAGE = 2;
 
-  useEffect(() => {
-    getPosts(page).then((data) => {
-      setPosts(data.posts)
-      setTotalPages(data.totalPages)
-    })
-  }, [page])
+export default function PostsBlock({
+  title = "Latest Posts",
+  icon = "article",
+  posts = [],
+  onDelete,
+}) {
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+
+  const filteredPosts = posts.filter((post) => {
+    const q = query.toLowerCase();
+    return (
+      post.title.toLowerCase().includes(q) ||
+      post.body.toLowerCase().includes(q) ||
+      post.tags.some((tag) => tag.toLowerCase().includes(q))
+    );
+  });
+
+  function handleQueryChange(newQuery) {
+    setQuery(newQuery);
+    setPage(1);
+  }
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+  const safePage = Math.min(page, totalPages);
+  const start = (safePage - 1) * POSTS_PER_PAGE;
+  const currentPosts = filteredPosts.slice(start, start + POSTS_PER_PAGE);
 
   return (
-    <div className="posts-block" data-layout-structure="block" data-media="container">
+    <div
+      className="posts-block"
+      data-layout-structure="block"
+      data-media="container"
+    >
       <h3 className="block-header post-title">
         <span className="material-symbols-outlined">{icon}</span>
         {title}
       </h3>
-      <div className="posts-wrapper">
-        {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
+      <div className="search-block">
+        <span className="material-symbols-outlined search-icon">search</span>
+        <input
+          className="search-input"
+          type="search"
+          value={query}
+          onChange={(e) => handleQueryChange(e.target.value)}
+          placeholder="Search posts…"
+        />
       </div>
-      <PaginationBlock page={page} totalPages={totalPages} onPageChange={setPage} />
+      <div className="posts-wrapper">
+        {currentPosts.map((post) => (
+          <PostCard key={post.id} post={post} onDelete={onDelete} />
+        ))}
+        {filteredPosts.length === 0 && (
+          <p className="search-empty">No posts match "{query}"</p>
+        )}
+      </div>
+      <PaginationBlock page={safePage} totalPages={totalPages} onPageChange={setPage} />
     </div>
-  )
+  );
 }

@@ -265,6 +265,14 @@ export async function getQuestions() {
   return QUESTIONS
 }
 
+export async function getCounts() {
+  return {
+    posts: POSTS.length,
+    events: EVENTS.length,
+    tasks: TASKS.length,
+  }
+}
+
 export async function sendContact(_data) {
   await new Promise((r) => setTimeout(r, 300))
   return { success: true }

@@ -1,4 +1,4 @@
-export default function EventCard({ event }) {
+export default function EventCard({ event, onDelete }) {
   const pct = Math.round((event.attendees / event.capacity) * 100)
   const capacityColor =
     pct >= 100 ? 'var(--clr-danger)' : pct >= 80 ? 'var(--clr-warning)' : 'var(--clr-accent)'
@@ -17,7 +17,7 @@ export default function EventCard({ event }) {
         📍 {event.location.venue}, {event.location.city}, {event.location.country}
       </div>
       <div className="event-footer">
-        <span className="event-date">🗓 {event.start_date}</span>
+        <span className="event-date">🗓 {new Date(event.startDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
         <div className="capacity-bar">
           <div className="capacity-track">
             <div
@@ -33,6 +33,9 @@ export default function EventCard({ event }) {
           <span key={tag} className="tag">{tag}</span>
         ))}
       </div>
+      <button className="btn-delete" onClick={() => onDelete(event.id)}>
+        Delete
+      </button>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, onDelete }) {
   const progressColor =
     task.status === 'done'
       ? 'var(--clr-success)'
@@ -37,9 +37,12 @@ export default function TaskCard({ task }) {
               <span key={tag} className="tag">{tag}</span>
             ))}
           </div>
-          <span className="due-date">Due {task.due_date}</span>
+          <span className="due-date">Due {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
         </div>
       </div>
+      <button className="btn-delete" onClick={() => onDelete(task.id)}>
+        Delete
+      </button>
     </div>
   )
 }

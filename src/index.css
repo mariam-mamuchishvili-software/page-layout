@@ -317,6 +317,9 @@
   .contact-block[data-media="container"] {
     container-name: contact-block;
   }
+  .count-block[data-media="container"] {
+    container-name: count-block;
+  }
 
   @media (max-width: 768px) {
     .row[data-layout-structure="builder"] {
@@ -515,6 +518,17 @@
     border-top: 1px dashed var(--clr-border);
   }
 
+  /* Count block — header + horizontal stats wrapper */
+  .count-block[data-layout-structure="block"] {
+    gap: var(--sp-4);
+  }
+
+  .count-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: var(--sp-4);
+  }
+
   /* Nav block — horizontal row, takes remaining space */
   .nav-list[data-layout-structure="block"] {
     flex: 1;
@@ -584,6 +598,52 @@
    Reusable UI pieces: cards, badges, tags
    ═══════════════════════════════════════════ */
 @layer components {
+  /* ─ Count component ─ */
+  .count-item[data-layout-structure="component"] {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-5) var(--sp-4);
+    background: var(--clr-bg-card);
+    border: 1px solid var(--clr-border-strong);
+    border-top: 3px solid var(--count-color, var(--clr-accent));
+    border-radius: var(--r-lg);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition:
+      box-shadow 0.2s,
+      transform 0.15s;
+  }
+
+  .count-item[data-layout-structure="component"]:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .count-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--count-color, var(--clr-accent));
+  }
+
+  .count-value {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--count-color, var(--clr-accent));
+    font-variant-numeric: tabular-nums;
+  }
+
+  .count-label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--clr-text-2);
+  }
+
   /* ─ Section heading ─ */
   .section-title {
     font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
@@ -1505,6 +1565,101 @@
       0 0 28px rgba(45, 218, 147, 0.35);
     transform: translateY(-1px);
   }
+
+  /* ─ Search block ─ */
+  .search-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: var(--sp-3);
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--clr-text-3);
+    pointer-events: none;
+    transition: color 0.2s;
+  }
+
+  .search-input {
+    font: inherit;
+    font-size: var(--text-sm);
+    color: var(--clr-text-1);
+    background: var(--clr-bg-card);
+    border: 1px solid var(--clr-border-strong);
+    border-radius: var(--r-full);
+    padding: var(--sp-2) var(--sp-4) var(--sp-2) calc(var(--sp-3) + 1rem + var(--sp-2));
+    width: 100%;
+    outline: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .search-input::placeholder {
+    color: var(--clr-text-3);
+  }
+
+  .search-input:hover {
+    border-color: rgba(124, 111, 247, 0.4);
+  }
+
+  .search-input:focus {
+    border-color: var(--clr-accent);
+    box-shadow: 0 0 0 3px var(--clr-accent-dim);
+  }
+
+  .search-input:focus ~ .search-icon,
+  .search-block:focus-within .search-icon {
+    color: var(--clr-accent);
+  }
+
+  .search-input::-webkit-search-cancel-button {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  .search-empty {
+    font-size: var(--text-sm);
+    color: var(--clr-text-3);
+    text-align: center;
+    padding: var(--sp-4) 0;
+  }
+
+  /* ─ Delete button ─ */
+  .btn-delete {
+    align-self: flex-end;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    padding: var(--sp-1) var(--sp-3);
+    background: var(--clr-danger-bg);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: var(--r-full);
+    color: var(--clr-danger);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition:
+      background 0.2s,
+      border-color 0.2s,
+      box-shadow 0.2s,
+      transform 0.15s;
+  }
+
+  .btn-delete:hover {
+    background: rgba(239, 68, 68, 0.22);
+    border-color: var(--clr-danger);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-delete:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -1624,6 +1779,12 @@
     .task-meta {
       flex-direction: column;
       align-items: flex-start;
+    }
+  }
+
+  @container count-block (max-width: 380px) {
+    .count-wrapper {
+      flex-direction: column;
     }
   }
 
