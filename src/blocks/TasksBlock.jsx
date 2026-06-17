@@ -5,7 +5,10 @@ export default function TasksBlock({
   icon = "checklist",
   tasks = [],
   onDelete,
+  onToggleComplete,
 }) {
+  const completedCount = tasks.filter((t) => t.status === 'done').length;
+
   return (
     <div
       className="tasks-block"
@@ -15,10 +18,11 @@ export default function TasksBlock({
       <h3 className="block-header task-title">
         <span className="material-symbols-outlined">{icon}</span>
         {title}
+        <span className="task-count">{completedCount}/{tasks.length} completed</span>
       </h3>
       <div className="tasks-wrapper">
         {tasks.map((task) => (
-          <TaskCard key={task.id} task={task} onDelete={onDelete} />
+          <TaskCard key={task.id} task={task} onDelete={onDelete} onToggleComplete={onToggleComplete} />
         ))}
       </div>
     </div>

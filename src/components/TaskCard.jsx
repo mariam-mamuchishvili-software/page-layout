@@ -1,11 +1,11 @@
-export default function TaskCard({ task, onDelete }) {
+export default function TaskCard({ task, onDelete, onToggleComplete }) {
   const progressColor =
-    task.status === 'done'
-      ? 'var(--clr-success)'
+    task.status === "done"
+      ? "var(--clr-success)"
       : task.progress >= 50
-        ? 'var(--clr-warning)'
-        : 'var(--clr-info)'
-  const statusLabel = task.status.replace('_', ' ')
+        ? "var(--clr-warning)"
+        : "var(--clr-info)";
+  const statusLabel = task.status.replace("_", " ");
 
   return (
     <div
@@ -34,15 +34,32 @@ export default function TaskCard({ task, onDelete }) {
         <div className="task-meta">
           <div className="tags">
             {task.tags.map((tag) => (
-              <span key={tag} className="tag">{tag}</span>
+              <span key={tag} className="tag">
+                {tag}
+              </span>
             ))}
           </div>
-          <span className="due-date">Due {new Date(task.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+          <span className="due-date">
+            Due{" "}
+            {new Date(task.dueDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </span>
         </div>
       </div>
-      <button className="btn-delete" onClick={() => onDelete(task.id)}>
-        Delete
-      </button>
+      <div className="task-actions">
+        <button
+          className={`btn-complete${task.status === "done" ? " btn-complete--active" : ""}`}
+          onClick={() => onToggleComplete(task.id)}
+        >
+          {task.status === "done" ? "✓ Completed" : "Mark Complete"}
+        </button>
+        <button className="btn-delete" onClick={() => onDelete(task.id)}>
+          Delete
+        </button>
+      </div>
     </div>
-  )
+  );
 }

@@ -27,7 +27,10 @@ export default function PostsBlock({
     setPage(1);
   }
 
-  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
+  );
   const safePage = Math.min(page, totalPages);
   const start = (safePage - 1) * POSTS_PER_PAGE;
   const currentPosts = filteredPosts.slice(start, start + POSTS_PER_PAGE);
@@ -60,7 +63,11 @@ export default function PostsBlock({
           <p className="search-empty">No posts match "{query}"</p>
         )}
       </div>
-      <PaginationBlock page={safePage} totalPages={totalPages} onPageChange={setPage} />
+      <PaginationBlock
+        page={safePage}
+        totalPages={totalPages}
+        onPageChange={setPage}
+      />
     </div>
   );
 }

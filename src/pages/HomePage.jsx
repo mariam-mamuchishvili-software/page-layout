@@ -25,6 +25,16 @@ export default function HomePage() {
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
+  function handleToggleCompleteTask(id) {
+    setTasks(tasks.map((task) =>
+      task.id === id
+        ? task.status === 'done'
+          ? { ...task, status: 'in_progress', progress: 50, completed: false }
+          : { ...task, status: 'done', progress: 100, completed: true }
+        : task
+    ));
+  }
+
   return (
     <BaseLayout
       title="Page Layout Components"
@@ -48,7 +58,7 @@ export default function HomePage() {
           data-content="main"
         >
           <main data-layout-structure="partial">
-            <PostsBlock posts={posts} onDelete={handleDeletePost} />
+            <EventsBlock events={events} onDelete={handleDeleteEvent} />
             <QuestionsBlock />
             <ContactBlock />
           </main>
@@ -59,8 +69,8 @@ export default function HomePage() {
           data-content="aside"
         >
           <aside data-layout-structure="partial">
-            <EventsBlock events={events} onDelete={handleDeleteEvent} />
-            <TasksBlock tasks={tasks} onDelete={handleDeleteTask} />
+            <PostsBlock posts={posts} onDelete={handleDeletePost} />
+            <TasksBlock tasks={tasks} onDelete={handleDeleteTask} onToggleComplete={handleToggleCompleteTask} />
           </aside>
         </div>
       </div>
