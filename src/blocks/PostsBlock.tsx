@@ -1,39 +1,47 @@
-import { useState } from "react";
-import PostCard from "../components/PostCard";
-import PaginationBlock from "./PaginationBlock";
+import { useState } from 'react'
+import type { Post } from '../types/post.types'
+import PostCard from '../components/PostCard'
+import PaginationBlock from './PaginationBlock'
 
-const POSTS_PER_PAGE = 2;
+const POSTS_PER_PAGE = 2
+
+interface Props {
+  title?: string
+  icon?: string
+  posts?: Post[]
+  onDelete: (id: number) => void
+}
 
 export default function PostsBlock({
-  title = "Latest Posts",
-  icon = "article",
+  title = 'Latest Posts',
+  icon = 'article',
   posts = [],
   onDelete,
-}) {
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
+}: Props) {
+  const [query, setQuery] = useState('')
+  const [page, setPage] = useState(1)
 
   const filteredPosts = posts.filter((post) => {
-    const q = query.toLowerCase();
+    const q = query.toLowerCase()
     return (
       post.title.toLowerCase().includes(q) ||
       post.body.toLowerCase().includes(q) ||
       post.tags.some((tag) => tag.toLowerCase().includes(q))
-    );
-  });
+    )
+  })
 
-  function handleQueryChange(newQuery) {
-    setQuery(newQuery);
-    setPage(1);
+  function handleQueryChange(newQuery: string) {
+    setQuery(newQuery)
+    setPage(1)
   }
 
   const totalPages = Math.max(
     1,
     Math.ceil(filteredPosts.length / POSTS_PER_PAGE),
-  );
-  const safePage = Math.min(page, totalPages);
-  const start = (safePage - 1) * POSTS_PER_PAGE;
-  const currentPosts = filteredPosts.slice(start, start + POSTS_PER_PAGE);
+  )
+  const safePage = Math.min(page, totalPages)
+  const start = (safePage - 1) * POSTS_PER_PAGE
+  const currentPosts = filteredPosts.slice(start, start + POSTS_PER_PAGE)
 
   return (
     <div
@@ -69,5 +77,5 @@ export default function PostsBlock({
         onPageChange={setPage}
       />
     </div>
-  );
+  )
 }

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import type { Post } from "../types/post.types";
+import type { Event } from "../types/event.types";
+import type { Task } from "../types/task.types";
 import database from "../storage/database";
 import BaseLayout from "../layouts/BaseLayout";
 import CountBlock from "../blocks/CountBlock";
@@ -9,30 +12,37 @@ import EventsBlock from "../blocks/EventsBlock";
 import TasksBlock from "../blocks/TasksBlock";
 
 export default function HomePage() {
-  const [posts, setPosts] = useState(database.posts);
-  const [events, setEvents] = useState(database.events);
-  const [tasks, setTasks] = useState(database.tasks);
+  const [posts, setPosts] = useState<Post[]>(database.posts);
+  const [events, setEvents] = useState<Event[]>(database.events);
+  const [tasks, setTasks] = useState<Task[]>(database.tasks);
 
-  function handleDeletePost(id) {
+  function handleDeletePost(id: number) {
     setPosts(posts.filter((post) => post.id !== id));
   }
 
-  function handleDeleteEvent(id) {
+  function handleDeleteEvent(id: number) {
     setEvents(events.filter((event) => event.id !== id));
   }
 
-  function handleDeleteTask(id) {
+  function handleDeleteTask(id: number) {
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
-  function handleToggleCompleteTask(id) {
-    setTasks(tasks.map((task) =>
-      task.id === id
-        ? task.status === 'done'
-          ? { ...task, status: 'in_progress', progress: 50, completed: false }
-          : { ...task, status: 'done', progress: 100, completed: true }
-        : task
-    ));
+  function handleToggleCompleteTask(id: number) {
+    setTasks(
+      tasks.map((task): Task => {
+        if (task.id !== id) return task;
+        if (task.status === "done") {
+          return {
+            ...task,
+            status: "in_progress",
+            progress: 50,
+            completed: false,
+          };
+        }
+        return { ...task, status: "done", progress: 100, completed: true };
+      }),
+    );
   }
 
   return (
@@ -70,7 +80,11 @@ export default function HomePage() {
         >
           <aside data-layout-structure="partial">
             <PostsBlock posts={posts} onDelete={handleDeletePost} />
-            <TasksBlock tasks={tasks} onDelete={handleDeleteTask} onToggleComplete={handleToggleCompleteTask} />
+            <TasksBlock
+              tasks={tasks}
+              onDelete={handleDeleteTask}
+              onToggleComplete={handleToggleCompleteTask}
+            />
           </aside>
         </div>
       </div>

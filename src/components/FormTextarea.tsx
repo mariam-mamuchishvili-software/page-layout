@@ -1,3 +1,16 @@
+interface Props {
+  id: string
+  name: string
+  label: string
+  placeholder: string
+  rows?: number
+  required?: boolean
+  minLength?: number
+  requiredMsg?: string
+  invalidMsg?: string
+  successMsg?: string
+}
+
 export default function FormTextarea({
   id,
   name,
@@ -9,7 +22,7 @@ export default function FormTextarea({
   requiredMsg,
   invalidMsg,
   successMsg,
-}) {
+}: Props) {
   return (
     <div className="form-group">
       <label className="form-label" htmlFor={id}>{label}</label>

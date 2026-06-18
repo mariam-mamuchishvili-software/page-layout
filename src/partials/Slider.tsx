@@ -14,7 +14,7 @@ export default function Slider() {
   return (
     <div className="slider" data-layout-structure="block">
       {slides.map((slide) => (
-        <SliderItem key={slide.id} {...slide} />
+        <SliderItem key={slide.id} src={slide.src} title={slide.title} excerpt={slide.excerpt} />
       ))}
     </div>
   )

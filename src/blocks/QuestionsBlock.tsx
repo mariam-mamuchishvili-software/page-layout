@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
+import type { Question } from '../types/question.types'
 import QuestionItem from '../components/QuestionItem'
 import { getQuestions } from '../services/api'
 
-export default function QuestionsBlock({ title = 'Questions', icon = 'help_outline' }) {
-  const [questions, setQuestions] = useState([])
+interface Props {
+  title?: string
+  icon?: string
+}
+
+export default function QuestionsBlock({ title = 'Questions', icon = 'help_outline' }: Props) {
+  const [questions, setQuestions] = useState<Question[]>([])
 
   useEffect(() => {
     getQuestions().then((data) => setQuestions(data))

@@ -1,4 +1,10 @@
-export default function SliderItem({ src, title, excerpt }) {
+interface Props {
+  src: string
+  title: string
+  excerpt: string
+}
+
+export default function SliderItem({ src, title, excerpt }: Props) {
   return (
     <div className="slider-item" data-layout-structure="component">
       <img src={src} alt="" data-layout-structure="component" />

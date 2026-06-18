@@ -1,6 +1,12 @@
 import PageItem from '../components/PageItem'
 
-export default function PaginationBlock({ page, totalPages, onPageChange }) {
+interface Props {
+  page: number
+  totalPages: number
+  onPageChange: (page: number) => void
+}
+
+export default function PaginationBlock({ page, totalPages, onPageChange }: Props) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
 
   return (

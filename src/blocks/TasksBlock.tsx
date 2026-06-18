@@ -1,13 +1,22 @@
-import TaskCard from "../components/TaskCard";
+import type { Task } from '../types/task.types'
+import TaskCard from '../components/TaskCard'
+
+interface Props {
+  title?: string
+  icon?: string
+  tasks?: Task[]
+  onDelete: (id: number) => void
+  onToggleComplete: (id: number) => void
+}
 
 export default function TasksBlock({
-  title = "Team Tasks",
-  icon = "checklist",
+  title = 'Team Tasks',
+  icon = 'checklist',
   tasks = [],
   onDelete,
   onToggleComplete,
-}) {
-  const completedCount = tasks.filter((t) => t.status === 'done').length;
+}: Props) {
+  const completedCount = tasks.filter((t) => t.status === 'done').length
 
   return (
     <div
@@ -26,5 +35,5 @@ export default function TasksBlock({
         ))}
       </div>
     </div>
-  );
+  )
 }

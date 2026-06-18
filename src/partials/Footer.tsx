@@ -55,7 +55,7 @@ export default function Footer() {
         </h3>
         <div className="social-icons">
           {socialLinks.map((s) => (
-            <SocialIcon key={s.id} {...s} />
+            <SocialIcon key={s.id} href={s.href} label={s.label} iconClass={s.iconClass} />
           ))}
         </div>
       </div>

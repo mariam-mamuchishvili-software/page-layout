@@ -1,5 +1,12 @@
-export default function PostCard({ post, onDelete }) {
-  const { id, title, body, tags, reactions, views } = post;
+import type { Post } from '../types/post.types'
+
+interface Props {
+  post: Post
+  onDelete: (id: number) => void
+}
+
+export default function PostCard({ post, onDelete }: Props) {
+  const { id, title, body, tags, reactions, views } = post
   return (
     <div className="post" data-layout-structure="component">
       <h4 className="post-title-text">{title}</h4>
@@ -26,5 +33,5 @@ export default function PostCard({ post, onDelete }) {
         Delete
       </button>
     </div>
-  );
+  )
 }

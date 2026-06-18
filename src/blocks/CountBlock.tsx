@@ -1,13 +1,20 @@
-import CountItem from "../components/CountItem";
+import CountItem from '../components/CountItem'
+
+interface Props {
+  title?: string
+  icon?: string
+  postCount?: number
+  eventCount?: number
+  taskCount?: number
+}
 
 export default function CountBlock({
-  title = "Overview",
-  icon = "bar_chart",
+  title = 'Overview',
+  icon = 'bar_chart',
   postCount = 0,
   eventCount = 0,
   taskCount = 0,
-}) {
-
+}: Props) {
   return (
     <div
       className="count-block"
@@ -39,5 +46,5 @@ export default function CountBlock({
         />
       </div>
     </div>
-  );
+  )
 }

@@ -1,3 +1,5 @@
+import type { Question } from '../types/question.types'
+
 const POSTS_PER_PAGE = 4
 
 const POSTS = [
@@ -205,7 +207,7 @@ const TASKS = [
   },
 ]
 
-const QUESTIONS = [
+const QUESTIONS: Question[] = [
   {
     id: 1,
     title: 'What is the difference between a <code>page</code> and a <code>builder</code>?',
@@ -261,7 +263,7 @@ export async function getTasks() {
   return TASKS
 }
 
-export async function getQuestions() {
+export async function getQuestions(): Promise<Question[]> {
   return QUESTIONS
 }
 
@@ -273,7 +275,7 @@ export async function getCounts() {
   }
 }
 
-export async function sendContact(_data) {
-  await new Promise((r) => setTimeout(r, 300))
+export async function sendContact(_data: Record<string, unknown>): Promise<{ success: boolean }> {
+  await new Promise<void>((r) => setTimeout(r, 300))
   return { success: true }
 }

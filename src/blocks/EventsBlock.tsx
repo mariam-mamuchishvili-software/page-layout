@@ -1,11 +1,19 @@
-import EventCard from "../components/EventCard";
+import type { Event } from '../types/event.types'
+import EventCard from '../components/EventCard'
+
+interface Props {
+  title?: string
+  icon?: string
+  events?: Event[]
+  onDelete: (id: number) => void
+}
 
 export default function EventsBlock({
-  title = "Upcoming Events",
-  icon = "event",
+  title = 'Upcoming Events',
+  icon = 'event',
   events = [],
   onDelete,
-}) {
+}: Props) {
   return (
     <div
       className="events-block"
@@ -22,5 +30,5 @@ export default function EventsBlock({
         ))}
       </div>
     </div>
-  );
+  )
 }

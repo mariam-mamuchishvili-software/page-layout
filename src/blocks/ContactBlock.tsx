@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { FormEvent } from 'react'
 import FormInput from '../components/FormInput'
 import FormTextarea from '../components/FormTextarea'
 import { sendContact } from '../services/api'
@@ -6,12 +7,12 @@ import { sendContact } from '../services/api'
 export default function ContactBlock() {
   const [flash, setFlash] = useState('')
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const data = Object.fromEntries(new FormData(e.target))
+    const data = Object.fromEntries(new FormData(e.currentTarget))
     await sendContact(data)
     setFlash('Your message has been sent!')
-    e.target.reset()
+    e.currentTarget.reset()
   }
 
   return (

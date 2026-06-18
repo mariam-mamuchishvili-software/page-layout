@@ -1,3 +1,19 @@
+import type { FormInputType } from '../types/form.types'
+
+interface Props {
+  id: string
+  name: string
+  type?: FormInputType
+  label: string
+  placeholder: string
+  autoComplete?: string
+  required?: boolean
+  minLength?: number
+  requiredMsg?: string
+  invalidMsg?: string
+  successMsg?: string
+}
+
 export default function FormInput({
   id,
   name,
@@ -10,7 +26,7 @@ export default function FormInput({
   requiredMsg,
   invalidMsg,
   successMsg,
-}) {
+}: Props) {
   return (
     <div className="form-group">
       <label className="form-label" htmlFor={id}>{label}</label>
