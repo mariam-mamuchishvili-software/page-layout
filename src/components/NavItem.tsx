@@ -1,17 +1,20 @@
+import { Link, useMatch } from 'react-router'
+
 interface Props {
-  href: string
+  to: string
   icon: string
   label: string
-  active?: boolean
 }
 
-export default function NavItem({ href, icon, label, active }: Props) {
+export default function NavItem({ to, icon, label }: Props) {
+  const match = useMatch({ path: to, end: true })
+
   return (
-    <li className={active ? 'active' : ''} data-layout-structure="component">
-      <a className="nav-link" href={href}>
+    <li className={match ? 'active' : ''} data-layout-structure="component">
+      <Link className="nav-link" to={to}>
         <span className="material-symbols-outlined">{icon}</span>
         <span className="link-label">{label}</span>
-      </a>
+      </Link>
     </li>
   )
 }
