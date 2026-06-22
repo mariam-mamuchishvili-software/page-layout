@@ -246,6 +246,10 @@ const QUESTIONS: Question[] = [
   },
 ]
 
+export async function getPostById(id: number) {
+  return POSTS.find((p) => p.id === id) ?? null
+}
+
 export async function getPosts(page = 1) {
   const start = (page - 1) * POSTS_PER_PAGE
   return {

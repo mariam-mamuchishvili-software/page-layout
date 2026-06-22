@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router'
 import type { Post } from '../types/post.types'
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
 
 export default function PostCard({ post, onDelete }: Props) {
   const { id, title, body, tags, reactions, views } = post
+  const navigate = useNavigate()
   return (
     <div className="post" data-layout-structure="component">
       <h4 className="post-title-text">{title}</h4>
@@ -29,9 +31,14 @@ export default function PostCard({ post, onDelete }: Props) {
         </div>
         <span className="post-views">👁 {views.toLocaleString()} views</span>
       </div>
-      <button className="btn-delete" onClick={() => onDelete(id)}>
-        Delete
-      </button>
+      <div className="post-actions">
+        <button className="btn-view-more" onClick={() => navigate(`/posts/${id}`)}>
+          View More
+        </button>
+        <button className="btn-delete" onClick={() => onDelete(id)}>
+          Delete
+        </button>
+      </div>
     </div>
   )
 }
