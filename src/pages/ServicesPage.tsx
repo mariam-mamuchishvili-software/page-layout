@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Post } from "../types/post.types";
 import type { Event } from "../types/event.types";
 import database from "../storage/database";
-import BaseLayout from "../layouts/BaseLayout";
+import HeaderBlock from "../blocks/HeaderBlock";
 import CountBlock from "../blocks/CountBlock";
 import EventsBlock from "../blocks/EventsBlock";
 import PostsBlock from "../blocks/PostsBlock";
@@ -12,10 +12,11 @@ export default function ServicesPage() {
   const [events, setEvents] = useState<Event[]>(database.events);
 
   return (
-    <BaseLayout
-      title="Our Services"
-      subtitle="Posts, events, and task tracking — everything we offer in one place."
-    >
+    <>
+      <HeaderBlock
+        title="Our Services"
+        subtitle="Posts, events, and task tracking — everything we offer in one place."
+      />
       <CountBlock
         postCount={posts.length}
         eventCount={events.length}
@@ -47,6 +48,6 @@ export default function ServicesPage() {
           </aside>
         </div>
       </div>
-    </BaseLayout>
+    </>
   );
 }

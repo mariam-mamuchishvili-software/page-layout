@@ -3,7 +3,7 @@ import type { Post } from "../types/post.types";
 import type { Event } from "../types/event.types";
 import type { Task } from "../types/task.types";
 import database from "../storage/database";
-import BaseLayout from "../layouts/BaseLayout";
+import HeaderBlock from "../blocks/HeaderBlock";
 import CountBlock from "../blocks/CountBlock";
 import PostsBlock from "../blocks/PostsBlock";
 import QuestionsBlock from "../blocks/QuestionsBlock";
@@ -46,16 +46,17 @@ export default function HomePage() {
   }
 
   return (
-    <BaseLayout
-      title="Page Layout Components"
-      subtitle={
-        <>
-          Understanding the main layout block concepts — <code>page</code>,{" "}
-          <code>builder</code>, <code>partial</code>, <code>block</code> &amp;{" "}
-          <code>component</code>.
-        </>
-      }
-    >
+    <>
+      <HeaderBlock
+        title="Page Layout Components"
+        subtitle={
+          <>
+            Understanding the main layout block concepts — <code>page</code>,{" "}
+            <code>builder</code>, <code>partial</code>, <code>block</code> &amp;{" "}
+            <code>component</code>.
+          </>
+        }
+      />
       <CountBlock
         postCount={posts.length}
         eventCount={events.length}
@@ -88,6 +89,6 @@ export default function HomePage() {
           </aside>
         </div>
       </div>
-    </BaseLayout>
+    </>
   );
 }

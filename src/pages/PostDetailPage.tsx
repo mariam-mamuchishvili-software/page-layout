@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router";
-import BaseLayout from "../layouts/BaseLayout";
+import HeaderBlock from "../blocks/HeaderBlock";
 import database from "../storage/database";
 
 export default function PostDetailPage() {
@@ -11,7 +11,8 @@ export default function PostDetailPage() {
   if (!post) return null;
 
   return (
-    <BaseLayout title={post.title} subtitle="">
+    <>
+      <HeaderBlock title={post.title} subtitle="" />
       <main className="partial" data-layout-structure="main">
         <div className="block" data-layout-structure="block">
           <div className="post post--detail" data-layout-structure="component">
@@ -42,6 +43,6 @@ export default function PostDetailPage() {
           </div>
         </div>
       </main>
-    </BaseLayout>
+    </>
   );
 }
